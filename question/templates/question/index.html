@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1> hello </h1>
+<h1>{{ question_session.title }}</h1>
+        {% for data in question_session.question_set.all %}
+            <h2 class="questions">{{ data.question_text }}</h2>
+        {%endfor%}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+function checkNewQ() {
+    setInterval(function(){
+    $(document).ready(function(){
+        $.ajax({
+            type: 'POST',
+            data: {last_pk: last_pk},
+            url: "{% url 'handle_questioning_ajax' %}" ,
+            success: function(data){
+                obj = JSON.parse(data);
+                if (!{{ new_questions }}){}
+
+                else {
+                    $(".questions").prepend({{ new_questions }})
+                     }
+
+        })
+
+
+    ); }, 3000);
+}
+setIntravel
+
+</script>
+</body>
+</html>
